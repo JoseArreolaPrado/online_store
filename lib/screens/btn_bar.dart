@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:online_store/provider/dark_theme_provider.dart';
 import 'package:online_store/screens/categories.dart';
 import 'package:online_store/screens/home.dart';
 import 'package:online_store/screens/user.dart';
+import 'package:provider/provider.dart';
 
 import 'cart.dart';
 
@@ -33,14 +35,19 @@ class _BottonBarScreenState extends State<BottonBarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeState = Provider.of<DarkThemeProvider>(context);
+    bool _isDark = themeState.getDarkTheme;
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: _isDark ? Theme.of(context).cardColor : Colors.white,
         onTap: _selectedPage,
         currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        unselectedItemColor: _isDark ? Colors.white10 : Colors.black12,
+        selectedItemColor: _isDark ? Colors.lightBlue[200] : Colors.black87,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(
@@ -48,16 +55,16 @@ class _BottonBarScreenState extends State<BottonBarScreen> {
               label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(_selectedIndex == 0
-                  ? IconlyBold.category
-                  : IconlyLight.category),
+                  ? IconlyLight.category
+                  : IconlyBold.category),
               label: "Categories"),
           BottomNavigationBarItem(
               icon:
-                  Icon(_selectedIndex == 0 ? IconlyBold.buy : IconlyLight.buy),
+                  Icon(_selectedIndex == 0 ? IconlyLight.buy : IconlyBold.buy),
               label: "Cart"),
           BottomNavigationBarItem(
               icon: Icon(
-                  _selectedIndex == 0 ? IconlyBold.user2 : IconlyLight.user2),
+                  _selectedIndex == 0 ? IconlyLight.user2 : IconlyBold.user2),
               label: "User"),
         ],
       ),
