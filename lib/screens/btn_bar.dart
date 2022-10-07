@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:online_store/provider/dark_theme_provider.dart';
 import 'package:online_store/screens/categories.dart';
@@ -20,11 +18,11 @@ class BottonBarScreen extends StatefulWidget {
 class _BottonBarScreenState extends State<BottonBarScreen> {
   int _selectedIndex = 0;
 
-  final List _pages = const [
-    HomeScreen(),
-    CategoriesScreen(),
-    CartScreen(),
-    UserScreen(),
+  final List<Map<String, dynamic>> _pages = [
+    // {'page': HomeScreen(), 'title': 'Home'},
+    // {'page': CategoriesScreen(), 'title': 'Categories'},
+    // {'page': CartScreen(), 'title': 'Cart'},
+    // {'page': UserScreen(), 'title': 'User'},
   ];
 
   void _selectedPage(int index) {
@@ -38,7 +36,11 @@ class _BottonBarScreenState extends State<BottonBarScreen> {
     final themeState = Provider.of<DarkThemeProvider>(context);
     bool _isDark = themeState.getDarkTheme;
     return Scaffold(
-      body: _pages[_selectedIndex],
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: Text(_pages[_selectedIndex]['title']),
+      // ),
+      body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: _isDark ? Theme.of(context).cardColor : Colors.white,
         onTap: _selectedPage,

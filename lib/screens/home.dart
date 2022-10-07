@@ -14,7 +14,6 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final themState = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: const Text('Home Page')),
       body: Center(
         child: SwitchListTile(
           value: themState.getDarkTheme,
