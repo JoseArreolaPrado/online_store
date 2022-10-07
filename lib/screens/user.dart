@@ -14,6 +14,14 @@ class UserScreen extends StatefulWidget {
 }
 
 class _UserScreenState extends State<UserScreen> {
+  final TextEditingController _adressTextController =
+      TextEditingController(text: "");
+  @override
+  void dispose() {
+    _adressTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final themState = Provider.of<DarkThemeProvider>(context);
@@ -75,7 +83,10 @@ class _UserScreenState extends State<UserScreen> {
                   title: 'Adress',
                   subtitle: 'My subtitle',
                   icon: IconlyBold.profile,
-                  onPressed: () {},
+                  onPressed: () async {
+                    print('object');
+                    await _showAdressDialog(context);
+                  },
                   color: color,
                 ),
                 _listTiles(
@@ -103,7 +114,9 @@ class _UserScreenState extends State<UserScreen> {
                 _listTiles(
                   title: 'Logout',
                   icon: IconlyBold.logout,
-                  onPressed: () {},
+                  onPressed: () async {
+                    await _signoutDialog(context);
+                  },
                   color: color,
                 ),
                 const SizedBox(height: 40),
@@ -130,6 +143,60 @@ class _UserScreenState extends State<UserScreen> {
       ),
     );
   }
+
+  Future<void> _showAdressDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Update'),
+            content: TextField(
+              onChanged: (value) {},
+              controller: _adressTextController,
+              maxLines: 1,
+              decoration: const InputDecoration(hintText: 'Your address'),
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Update'),
+              )
+            ],
+          );
+        });
+  }
+}
+
+Future<void> _signoutDialog(BuildContext context) {
+  return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Row(
+            children: const [Icon(IconlyBold.user2), Text(' Sign out')],
+          ),
+          // const Text('Sign out'),
+          content: const Text('Do you want to sign out?'),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Cancel')),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text(
+                'Ok',
+                style: TextStyle(color: Colors.red),
+              ),
+            )
+          ],
+        );
+      });
 }
 
 Widget _listTiles({
@@ -152,6 +219,6 @@ Widget _listTiles({
     ),
     leading: Icon(icon),
     trailing: const Icon(IconlyLight.arrowRight2),
-    onTap: (() => onPressed),
+    onTap: (() => onPressed()),
   );
 }
