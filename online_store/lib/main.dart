@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:online_store/const/theme_data.dart';
 import 'package:online_store/provider/dark_theme_provider.dart';
-import 'package:online_store/screens/home.dart';
-import 'package:online_store/services/dark_theme_pref.dart';
+import 'package:online_store/screens/btn_bar.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -41,7 +40,7 @@ class _MyAppState extends State<MyApp> {
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: Styles.themeData(themeProvider.getDarkTheme, context),
-              home: HomeScreen(),
+              home: BottonBarScreen(),
             );
           }),
         ));
