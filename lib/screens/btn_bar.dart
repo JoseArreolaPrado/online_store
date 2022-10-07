@@ -18,11 +18,18 @@ class BottonBarScreen extends StatefulWidget {
 class _BottonBarScreenState extends State<BottonBarScreen> {
   int _selectedIndex = 0;
 
-  final List<Map<String, dynamic>> _pages = [
-    // {'page': HomeScreen(), 'title': 'Home'},
-    // {'page': CategoriesScreen(), 'title': 'Categories'},
-    // {'page': CartScreen(), 'title': 'Cart'},
-    // {'page': UserScreen(), 'title': 'User'},
+  // final List<Map<String, dynamic>> _pages = [
+  //   // {'page': HomeScreen(), 'title': 'Home'},
+  //   // {'page': CategoriesScreen(), 'title': 'Categories'},
+  //   // {'page': CartScreen(), 'title': 'Cart'},
+  //   // {'page': UserScreen(), 'title': 'User'},
+  // ];
+
+  final List _pages = const [
+    HomeScreen(),
+    CategoriesScreen(),
+    CartScreen(),
+    UserScreen(),
   ];
 
   void _selectedPage(int index) {
@@ -40,7 +47,8 @@ class _BottonBarScreenState extends State<BottonBarScreen> {
       //   centerTitle: true,
       //   title: Text(_pages[_selectedIndex]['title']),
       // ),
-      body: _pages[_selectedIndex]['page'],
+      // body: _pages[_selectedIndex]['page'],
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: _isDark ? Theme.of(context).cardColor : Colors.white,
         onTap: _selectedPage,
