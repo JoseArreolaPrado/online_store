@@ -159,7 +159,9 @@ class _UserScreenState extends State<UserScreen> {
             actions: [
               TextButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
                 },
                 child: const Text('Update'),
               )
@@ -169,25 +171,30 @@ class _UserScreenState extends State<UserScreen> {
   }
 }
 
-Future<void> _signoutDialog(BuildContext context) {
-  return showDialog(
+Future<void> _signoutDialog(BuildContext context) async {
+  await showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
           title: Row(
-            children: const [Icon(IconlyBold.user2), Text(' Sign out')],
+            children: const [Icon(IconlyBold.user2), Text('  Sign out')],
           ),
           // const Text('Sign out'),
           content: const Text('Do you want to sign out?'),
           actions: [
             TextButton(
                 onPressed: () {
-                  Navigator.pop(context);
+                  if (Navigator.canPop(context)) {
+                    Navigator.pop(context);
+                  }
+                  ;
                 },
                 child: const Text('Cancel')),
             TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                if (Navigator.canPop(context)) {
+                  Navigator.pop(context);
+                }
               },
               child: const Text(
                 'Ok',
