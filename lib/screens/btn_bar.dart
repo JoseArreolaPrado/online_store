@@ -1,37 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:online_store/provider/dark_theme_provider.dart';
-import 'package:online_store/screens/categories.dart';
-import 'package:online_store/screens/home.dart';
 import 'package:online_store/screens/user.dart';
 import 'package:provider/provider.dart';
 
+import '../provider/dark_theme_provider.dart';
 import 'cart.dart';
+import 'categories.dart';
+import 'home.dart';
 
-class BottonBarScreen extends StatefulWidget {
-  const BottonBarScreen({Key? key}) : super(key: key);
+class BottomBarScreen extends StatefulWidget {
+  const BottomBarScreen({Key? key}) : super(key: key);
 
   @override
-  State<BottonBarScreen> createState() => _BottonBarScreenState();
+  State<BottomBarScreen> createState() => _BottomBarScreenState();
 }
 
-class _BottonBarScreenState extends State<BottonBarScreen> {
-  int _selectedIndex = 0;
-
-  // final List<Map<String, dynamic>> _pages = [
-  //   // {'page': HomeScreen(), 'title': 'Home'},
-  //   // {'page': CategoriesScreen(), 'title': 'Categories'},
-  //   // {'page': CartScreen(), 'title': 'Cart'},
-  //   // {'page': UserScreen(), 'title': 'User'},
-  // ];
-
-  final List _pages = const [
-    HomeScreen(),
-    CategoriesScreen(),
-    CartScreen(),
-    UserScreen(),
+class _BottomBarScreenState extends State<BottomBarScreen> {
+  int _selectedIndex = 1;
+  final List<Map<String, dynamic>> _pages = [
+    {
+      'page': const HomeScreen(),
+      'title': 'Home Screen',
+    },
+    {
+      'page': CategoriesScreen(),
+      'title': 'Categories Screen',
+    },
+    {
+      'page': const CartScreen(),
+      'title': 'Cart Screen',
+    },
+    {
+      'page': const UserScreen(),
+      'title': 'user Screen',
+    },
   ];
-
   void _selectedPage(int index) {
     setState(() {
       _selectedIndex = index;
@@ -44,38 +47,39 @@ class _BottonBarScreenState extends State<BottonBarScreen> {
     bool _isDark = themeState.getDarkTheme;
     return Scaffold(
       // appBar: AppBar(
-      //   centerTitle: true,
-      //   title: Text(_pages[_selectedIndex]['title']),
+      //   title: Text( _pages[_selectedIndex]['title']),
       // ),
-      // body: _pages[_selectedIndex]['page'],
-      body: _pages[_selectedIndex],
+      body: _pages[_selectedIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: _isDark ? Theme.of(context).cardColor : Colors.white,
-        onTap: _selectedPage,
-        currentIndex: _selectedIndex,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        currentIndex: _selectedIndex,
         unselectedItemColor: _isDark ? Colors.white10 : Colors.black12,
-        selectedItemColor: _isDark ? Colors.lightBlue[200] : Colors.black87,
+        selectedItemColor: _isDark ? Colors.lightBlue.shade200 : Colors.black87,
+        onTap: _selectedPage,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(
-                  _selectedIndex == 0 ? IconlyBold.home : IconlyLight.home),
-              label: "Home"),
+            icon:
+                Icon(_selectedIndex == 0 ? IconlyBold.home : IconlyLight.home),
+            label: "Home",
+          ),
           BottomNavigationBarItem(
-              icon: Icon(_selectedIndex == 0
-                  ? IconlyLight.category
-                  : IconlyBold.category),
-              label: "Categories"),
+            icon: Icon(_selectedIndex == 1
+                ? IconlyBold.category
+                : IconlyLight.category),
+            label: "Categories",
+          ),
           BottomNavigationBarItem(
-              icon:
-                  Icon(_selectedIndex == 0 ? IconlyLight.buy : IconlyBold.buy),
-              label: "Cart"),
+            icon: Icon(_selectedIndex == 2 ? IconlyBold.buy : IconlyLight.buy),
+            label: "Cart",
+          ),
           BottomNavigationBarItem(
-              icon: Icon(
-                  _selectedIndex == 0 ? IconlyLight.user2 : IconlyBold.user2),
-              label: "User"),
+            icon: Icon(
+                _selectedIndex == 3 ? IconlyBold.user2 : IconlyLight.user2),
+            label: "User",
+          ),
         ],
       ),
     );

@@ -40,7 +40,7 @@ class _MyAppState extends State<MyApp> {
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: Styles.themeData(themeProvider.getDarkTheme, context),
-              home: BottonBarScreen(),
+              home: const BottomBarScreen(),
             );
           }),
         ));
