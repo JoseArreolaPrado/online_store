@@ -4,7 +4,42 @@ import 'package:online_store/widgets/categoires_widget.dart';
 import 'package:online_store/widgets/text_widget.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({Key? key}) : super(key: key);
+  CategoriesScreen({Key? key}) : super(key: key);
+
+  List<Color> gridColor = [
+    Colors.red,
+    Colors.blue,
+    Colors.red,
+    Colors.blue,
+    Colors.red,
+    Colors.blue,
+  ];
+  final List<Map<String, dynamic>> catInfo = [
+    {
+      'imgPath': 'assets/cat/veg.png',
+      'catText': 'Veggies',
+    },
+    {
+      'imgPath': 'assets/cat/veg.png',
+      'catText': 'Veggies',
+    },
+    {
+      'imgPath': 'assets/cat/veg.png',
+      'catText': 'Veggies',
+    },
+    {
+      'imgPath': 'assets/cat/veg.png',
+      'catText': 'Veggies',
+    },
+    {
+      'imgPath': 'assets/cat/veg.png',
+      'catText': 'Veggies',
+    },
+    {
+      'imgPath': 'assets/cat/veg.png',
+      'catText': 'Veggies',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +61,14 @@ class CategoriesScreen extends StatelessWidget {
         child: GridView.count(
           crossAxisCount: 2,
           childAspectRatio: 240 / 250,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 19,
+          mainAxisSpacing: 10, //Horizontal spacing
+          crossAxisSpacing: 19, //Vertical spacing
           children: List.generate(6, (index) {
-            return CategoriesWidget();
+            return CategoriesWidget(
+              catText: catInfo[index]['catText'],
+              backgroundColor: gridColor[index],
+              imgPath: catInfo[index]['imgPath'],
+            );
           }),
         ),
       ),
