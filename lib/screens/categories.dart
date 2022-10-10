@@ -7,11 +7,11 @@ class CategoriesScreen extends StatelessWidget {
   CategoriesScreen({Key? key}) : super(key: key);
 
   List<Color> gridColor = [
+    Colors.green,
+    Colors.green,
+    Colors.grey,
     Colors.red,
-    Colors.blue,
-    Colors.red,
-    Colors.blue,
-    Colors.red,
+    Colors.brown,
     Colors.blue,
   ];
   final List<Map<String, dynamic>> catInfo = [
@@ -20,24 +20,24 @@ class CategoriesScreen extends StatelessWidget {
       'catText': 'Veggies',
     },
     {
-      'imgPath': 'assets/cat/veg.png',
-      'catText': 'Veggies',
+      'imgPath': 'assets/cat/fruits.png',
+      'catText': 'Fruits',
     },
     {
-      'imgPath': 'assets/cat/veg.png',
-      'catText': 'Veggies',
+      'imgPath': 'assets/cat/dairy.png',
+      'catText': 'Dairy',
     },
     {
-      'imgPath': 'assets/cat/veg.png',
-      'catText': 'Veggies',
+      'imgPath': 'assets/cat/sea.png',
+      'catText': 'Sea Food',
     },
     {
-      'imgPath': 'assets/cat/veg.png',
-      'catText': 'Veggies',
+      'imgPath': 'assets/cat/crerals.png',
+      'catText': 'Cerals',
     },
     {
-      'imgPath': 'assets/cat/veg.png',
-      'catText': 'Veggies',
+      'imgPath': 'assets/cat/cleaning.png',
+      'catText': 'Cleaning products',
     },
   ];
 
