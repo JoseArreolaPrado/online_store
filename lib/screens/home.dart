@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:online_store/provider/dark_theme_provider.dart';
 import 'package:online_store/services/utils.dart';
 import 'package:online_store/widgets/on_sale_widget.dart';
@@ -50,15 +51,46 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () {},
               child: TextWidget(
                   text: 'View all', color: Colors.blue, textSize: 20)),
-          SizedBox(
-            height: size.height * 0.50,
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (BuildContext context, int index) {
-                return OnSaleWidget();
-              },
-            ),
+          const SizedBox(
+            height: 6,
+          ),
+          Row(
+            children: [
+              RotatedBox(
+                  quarterTurns: -1,
+                  child: Row(
+                    children: [
+                      TextWidget(
+                        text: 'On sale'.toUpperCase(),
+                        color: Colors.red,
+                        textSize: 22,
+                        isTitle: true,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Icon(
+                        IconlyLight.discount,
+                        color: Colors.red,
+                      ),
+                    ],
+                  )),
+              SizedBox(
+                width: 8,
+              ),
+              Flexible(
+                child: SizedBox(
+                  height: size.height * 0.50,
+                  child: ListView.builder(
+                    itemCount: 10,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                      return const OnSaleWidget();
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
