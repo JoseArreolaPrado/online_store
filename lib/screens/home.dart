@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:online_store/provider/dark_theme_provider.dart';
 import 'package:online_store/services/utils.dart';
 import 'package:online_store/widgets/on_sale_widget.dart';
+import 'package:online_store/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -45,7 +46,20 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          OnSaleWidget(),
+          TextButton(
+              onPressed: () {},
+              child: TextWidget(
+                  text: 'View all', color: Colors.blue, textSize: 20)),
+          SizedBox(
+            height: size.height * 0.50,
+            child: ListView.builder(
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (BuildContext context, int index) {
+                return OnSaleWidget();
+              },
+            ),
+          ),
         ],
       ),
     );
