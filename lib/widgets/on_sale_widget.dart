@@ -1,3 +1,4 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -19,73 +20,78 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
     Size size = Utils(context).getScreenSize;
     final theme = Utils(context).getTheme;
     final Color color = Utils(context).color;
-    return Material(
-      color: Theme.of(context).cardColor.withOpacity(0.9),
-      borderRadius: BorderRadius.circular(12),
-      child: InkWell(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Material(
+        color: Theme.of(context).cardColor.withOpacity(0.9),
         borderRadius: BorderRadius.circular(12),
-        onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.network(
-                    'https://s.cornershopapp.com/product-images/2429181.jpg?versionId=1YOHJ9AeP_sHkg_15kOMjlZjdi28IAib',
-                    height: size.height * 0.22,
-                    fit: BoxFit.fill,
-                  ),
-                  Column(
-                    children: [
-                      TextWidget(
-                        text: '1kg',
-                        color: color,
-                        textSize: 22,
-                        isTitle: true,
-                      ),
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      Row(
-                        children: [
-                          GestureDetector(
-                            onTap: () {},
-                            child: Icon(
-                              IconlyLight.bag2,
-                              size: 22,
-                              color: color,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(12),
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FancyShimmerImage(
+                      imageUrl:
+                          'https://s.cornershopapp.com/product-images/2429181.jpg?versionId=1YOHJ9AeP_sHkg_15kOMjlZjdi28IAib',
+                      height: size.width * 0.22,
+                      width: size.width * 0.22,
+                      boxFit: BoxFit.fill,
+                    ),
+                    Column(
+                      children: [
+                        TextWidget(
+                          text: '1kg',
+                          color: color,
+                          textSize: 22,
+                          isTitle: true,
+                        ),
+                        const SizedBox(
+                          height: 6,
+                        ),
+                        Row(
+                          children: [
+                            GestureDetector(
+                              onTap: () {},
+                              child: Icon(
+                                IconlyLight.bag2,
+                                size: 22,
+                                color: color,
+                              ),
                             ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              print('Print heart');
-                            },
-                            child: Icon(
-                              IconlyLight.heart,
-                              size: 22,
-                              color: color,
+                            GestureDetector(
+                              onTap: () {
+                                print('Print heart');
+                              },
+                              child: Icon(
+                                IconlyLight.heart,
+                                size: 22,
+                                color: color,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const PriceWidget(),
-              const SizedBox(height: 5),
-              TextWidget(
-                text: 'Product title',
-                color: color,
-                textSize: 16,
-                isTitle: true,
-              ),
-              const SizedBox(height: 5),
-            ],
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const PriceWidget(),
+                const SizedBox(height: 5),
+                TextWidget(
+                  text: 'Product title',
+                  color: color,
+                  textSize: 16,
+                  isTitle: true,
+                ),
+                const SizedBox(height: 5),
+              ],
+            ),
           ),
         ),
       ),

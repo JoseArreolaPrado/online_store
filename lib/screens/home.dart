@@ -26,11 +26,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final themState = Provider.of<DarkThemeProvider>(context);
     Size size = Utils(context).getScreenSize;
+    Color color = Utils(context).color;
     return Scaffold(
       body: Column(
         children: [
           SizedBox(
-            height: size.height * 0.30,
+            height: size.height * 0.25,
             child: Swiper(
               itemBuilder: (BuildContext context, int index) {
                 return Image.asset(
@@ -80,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Flexible(
                 child: SizedBox(
-                  height: size.height * 0.50,
+                  height: size.height * 0.25,
                   child: ListView.builder(
                     itemCount: 10,
                     scrollDirection: Axis.horizontal,
@@ -92,6 +93,29 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextWidget(
+                text: 'Our products',
+                color: color,
+                textSize: 22,
+                isTitle: true,
+              ),
+              // const Spacer(),
+              TextButton(
+                onPressed: () {},
+                child: TextWidget(
+                  text: 'Browse all',
+                  color: Colors.blue,
+                  textSize: 20,
+                ),
+              )
+            ],
+          )
         ],
       ),
     );
