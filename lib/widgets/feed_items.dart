@@ -71,33 +71,48 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    PriceWidget(),
+                    Flexible(
+                      flex: 4,
+                      child: PriceWidget(
+                        isOnSale: true,
+                        price: 5.9,
+                        salePrice: 2.99,
+                        textPrice: _quantityTextController.text,
+                      ),
+                    ),
                     const SizedBox(width: 8),
                     Flexible(
                       child: Row(
                         children: [
-                          FittedBox(
-                            child: TextWidget(
-                              text: 'kg',
-                              color: color,
-                              textSize: 18,
-                              isTitle: true,
+                          Flexible(
+                            flex: 1,
+                            child: FittedBox(
+                              child: TextWidget(
+                                text: 'kg',
+                                color: color,
+                                textSize: 18,
+                                isTitle: true,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 5),
                           Flexible(
+                              flex: 2,
                               child: TextFormField(
-                            controller: _quantityTextController,
-                            key: const ValueKey('10'),
-                            style: TextStyle(color: color, fontSize: 18),
-                            keyboardType: TextInputType.number,
-                            maxLines: 1,
-                            enabled: true,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(
-                                  RegExp('[0-9.]'))
-                            ],
-                          ))
+                                controller: _quantityTextController,
+                                key: const ValueKey('10'),
+                                style: TextStyle(color: color, fontSize: 18),
+                                keyboardType: TextInputType.number,
+                                maxLines: 1,
+                                enabled: true,
+                                onChanged: (value) {
+                                  setState(() {});
+                                },
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp('[0-9.]'))
+                                ],
+                              ))
                         ],
                       ),
                     )
