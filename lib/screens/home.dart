@@ -1,7 +1,10 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:online_store/innser_screens/feeds_screen.dart';
+import 'package:online_store/innser_screens/on_sale_screens.dart';
 import 'package:online_store/provider/dark_theme_provider.dart';
+import 'package:online_store/services/global_methods.dart';
 import 'package:online_store/services/utils.dart';
 import 'package:online_store/widgets/feed_items.dart';
 import 'package:online_store/widgets/on_sale_widget.dart';
@@ -51,7 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  GlobalMethods.navigateTo(
+                      context: context, routeName: OnSaleScreen.routeName);
+                },
                 child: TextWidget(
                     text: 'View all', color: Colors.blue, textSize: 20)),
             const SizedBox(
@@ -111,7 +117,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   // const Spacer(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      GlobalMethods.navigateTo(
+                          context: context, routeName: FeedsScreen.routeName);
+                    },
                     child: TextWidget(
                       text: 'Browse all',
                       color: Colors.blue,
