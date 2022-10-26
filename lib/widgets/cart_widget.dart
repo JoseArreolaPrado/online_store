@@ -140,7 +140,8 @@ class _CartWidgetState extends State<CartWidget> {
                           )
                         ],
                       ),
-                    )
+                    ),
+                    const SizedBox(height: 5)
                   ],
                 ),
               ),
