@@ -5,7 +5,7 @@ import 'package:online_store/innser_screens/feeds_screen.dart';
 import 'package:online_store/innser_screens/on_sale_screens.dart';
 import 'package:online_store/provider/dark_theme_provider.dart';
 import 'package:online_store/screens/btn_bar.dart';
-import 'package:online_store/screens/product_details_screen.dart';
+import 'package:online_store/innser_screens/product_details_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -47,8 +47,7 @@ class _MyAppState extends State<MyApp> {
               routes: {
                 OnSaleScreen.routeName: (context) => const OnSaleScreen(),
                 FeedsScreen.routeName: (context) => const FeedsScreen(),
-                ProductDetailsScreen.routeName: (context) =>
-                    const ProductDetailsScreen()
+                ProductDetails.routeName: (context) => const ProductDetails()
               },
             );
           }),

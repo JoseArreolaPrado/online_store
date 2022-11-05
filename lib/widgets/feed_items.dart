@@ -1,6 +1,8 @@
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:online_store/innser_screens/product_details_screen.dart';
+import 'package:online_store/services/global_methods.dart';
 import 'package:online_store/widgets/heart_button_widget.dart';
 import 'package:online_store/widgets/price_widget.dart';
 import 'package:online_store/widgets/text_widget.dart';
@@ -39,7 +41,10 @@ class _FeedsWidgetState extends State<FeedsWidget> {
         color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(22),
         child: InkWell(
-          onTap: (() {}),
+          onTap: (() {
+            GlobalMethods.navigateTo(
+                context: context, routeName: ProductDetails.routeName);
+          }),
           borderRadius: BorderRadius.circular(22),
           child: Column(
             children: [

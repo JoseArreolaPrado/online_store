@@ -2,6 +2,8 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:online_store/innser_screens/product_details_screen.dart';
+import 'package:online_store/services/global_methods.dart';
 import 'package:online_store/widgets/heart_button_widget.dart';
 import 'package:online_store/widgets/price_widget.dart';
 import 'package:online_store/widgets/text_widget.dart';
@@ -28,7 +30,10 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
         borderRadius: BorderRadius.circular(12),
         child: InkWell(
           borderRadius: BorderRadius.circular(12),
-          onTap: () {},
+          onTap: () {
+            GlobalMethods.navigateTo(
+                context: context, routeName: ProductDetails.routeName);
+          },
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

@@ -5,6 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:online_store/widgets/heart_button_widget.dart';
 import 'package:online_store/widgets/text_widget.dart';
 
+import '../innser_screens/product_details_screen.dart';
+import '../services/global_methods.dart';
 import '../services/utils.dart';
 
 class CartWidget extends StatefulWidget {
@@ -33,7 +35,10 @@ class _CartWidgetState extends State<CartWidget> {
     final Color color = Utils(context).color;
     Size size = Utils(context).getScreenSize;
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        GlobalMethods.navigateTo(
+            context: context, routeName: ProductDetails.routeName);
+      },
       child: Row(
         children: [
           Expanded(
